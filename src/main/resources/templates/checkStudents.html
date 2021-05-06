@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<form th:action="@{/logout}"
+      method="POST">
+
+    <input type="submit" value="Logout"/>
+    <!--<td th:text="${user.firstName} ${user.lastName}"/>-->
+    <div th:if="${session.user}">
+        <p th:text="${session.user.firstName}"></p>
+    </div>
+</form>
+<body>
+
+<div class="row border rounded m-3 p-3">
+
+    <div class="col">
+        <tr th:object="${course}">
+
+            <td th:text="${course.name}"/>
+            <br>
+
+        <tr th:each="tempStudents : ${course.students}">
+            <td th:text="${tempStudents.user.firstName}"/>
+            <td th:text="${tempStudents.user.lastName}"/>
+            <br>
+        </tr>
+    </div>
+
+
+</div>
+
+
+<hr>
+<a th:href="@{/teachers}">Back to courses</a>
+
+
+</body>
+</html>
